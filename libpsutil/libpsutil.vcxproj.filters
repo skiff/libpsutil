@@ -22,7 +22,7 @@
     <ClCompile Include="system\syscalls.cpp">
       <Filter>system</Filter>
     </ClCompile>
-    <ClCompile Include="network\sockets.cpp">
+    <ClCompile Include="network\socket.cpp">
       <Filter>network</Filter>
     </ClCompile>
     <ClCompile Include="encryption\rc4.cpp">
@@ -30,6 +30,9 @@
     </ClCompile>
     <ClCompile Include="system\imports.cpp">
       <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="network\httpclient.cpp">
+      <Filter>network</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -44,7 +47,7 @@
     <ClInclude Include="system\syscalls.hpp">
       <Filter>system</Filter>
     </ClInclude>
-    <ClInclude Include="network\sockets.hpp">
+    <ClInclude Include="network\socket.hpp">
       <Filter>network</Filter>
     </ClInclude>
     <ClInclude Include="encryption\rc4.hpp">
@@ -52,6 +55,9 @@
     </ClInclude>
     <ClInclude Include="system\imports.hpp">
       <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="network\httpclient.hpp">
+      <Filter>network</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
