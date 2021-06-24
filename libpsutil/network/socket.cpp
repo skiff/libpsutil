@@ -117,7 +117,7 @@ namespace libpsutil
 				}
 
 				int chunk = min(2048, data_remaining);
-				if (this->type_ == SOCKET_TYPE_TCP)
+				if (this->type_ == socket_type::SOCKET_TYPE_TCP)
 				{
 					recv_length = ::recv(this->socket_, current_position, chunk, 0);
 				}
@@ -131,6 +131,10 @@ namespace libpsutil
 				{
 					printf("[Socket]: Receive failed\n");
 					return false;
+				}
+				else if (recv_length < chunk)
+				{
+					return true;
 				}
 
 				data_remaining -= recv_length;
@@ -162,7 +166,7 @@ namespace libpsutil
 				}
 
 				int chunk = min(2048, data_remaining);
-				if (this->type_ == SOCKET_TYPE_TCP)
+				if (this->type_ == socket_type::SOCKET_TYPE_TCP)
 				{
 					send_length = ::send(this->socket_, current_position, chunk, 0);
 				}
@@ -175,6 +179,10 @@ namespace libpsutil
 				{
 					printf("[Socket]: Send failed\n");
 					return false;
+				}
+				else if (send_length < chunk)
+				{
+					return true;
 				}
 
 				data_remaining -= send_length;

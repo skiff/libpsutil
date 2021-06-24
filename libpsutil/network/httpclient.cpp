@@ -12,8 +12,6 @@ namespace libpsutil
 			auto* host = gethostbyname(url.data());
 			auto ip = *((uint32_t*)host->h_addr);
 
-			socket* http = new socket(ip, port);
-
 			size_t pos = 0;
 			std::string space = " ";
 			while ((pos = query.find(space, pos)) != std::string::npos)
@@ -21,12 +19,17 @@ namespace libpsutil
 
 			char response[1024] = { 0 };
 			char request[1024] = { 0 };
-			sprintf(request, "GET %s HTTP/1.1\nHost: localhost\nContent-Length: 1024\n\r\n\r\n", query.data());
+			sprintf(request, "GET %s HTTP/1.1\nHost: %s\r\n\r\n", query.data(), url.data());
 
-			auto success = http->send(request, 1024);
+			socket* http = new socket(ip, port);
+			auto success = http->connect();
 			if (success)
 			{
-				success = http->receive(response, 1024);
+				success = http->send(request, strlen(request) + 1);
+				if (success)
+				{
+					success = http->receive(response, 1024);
+				}
 			}
 
 			http->close();

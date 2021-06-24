@@ -2,6 +2,7 @@
 #include <sys/return_code.h>
 #include "system/memory.hpp"
 #include "system/syscalls.hpp"
+#include "system/imports.hpp"
 
 namespace libpsutil
 {
@@ -13,19 +14,19 @@ namespace libpsutil
 
 		bool get(uint32_t address, void* data, size_t length)
 		{
-			return sys_dbg_read_process_memory(address, data, length) == SUCCEEDED;
+			return read_process_memory(address, data, length) == SUCCEEDED;
 		}
 
 		bool get(uint32_t address, std::vector<uint8_t>& bytes, size_t length)
 		{
 			bytes.resize(length);
 			uint8_t* buffer = &bytes[0];
-			return sys_dbg_read_process_memory(address, buffer, length) == SUCCEEDED;
+			return read_process_memory(address, buffer, length) == SUCCEEDED;
 		}
 
 		bool set(uint32_t address, void* data, size_t length)
 		{
-			return sys_dbg_write_process_memory(address, data, length) == SUCCEEDED;
+			return write_process_memory(address, data, length) == SUCCEEDED;
 		}
 
 		bool nop(uint32_t address)
@@ -85,19 +86,19 @@ namespace libpsutil
 			detour::force_stub_addr = address;
 		}
 
-		detour::detour(uint32_t address, void(*destination))
+		void detour::setup_detour(uint32_t address, void *destination)
 		{
 			if (address == NULL) { return; }
+
+			memcpy(this->original_instructions, reinterpret_cast<void*>(address), 0x10);
 
 			this->address = reinterpret_cast<uint32_t*>(address);
 			auto* stub_address = reinterpret_cast<uint32_t*>(this->allocate_stub());
 
-			memcpy(this->original_instructions, reinterpret_cast<void*>(address), 0x10);
-
 			uint32_t instruction_count = 0;
 			for (int i = 0; i < 4; i++)
 			{
-				const auto current_address = reinterpret_cast<uint32_t>(&stub_address[instruction_count]);
+				auto current_address = reinterpret_cast<uint32_t>(&stub_address[instruction_count]);
 				if ((this->address[i] & 0xF8000000) == 0x48000000)
 				{
 					memory::jump(current_address, this->resolve_branch(this->address[i], (int)&this->address[i]), true);
@@ -111,7 +112,7 @@ namespace libpsutil
 			}
 
 			memory::jump(reinterpret_cast<uint32_t>(&stub_address[instruction_count]), address + 0x10, false);
-			memory::jump(address, reinterpret_cast<uint32_t>(destination), false);
+			memory::jump(address, *reinterpret_cast<uint32_t*>(destination), false);
 
 			this->stub_opd[0] = reinterpret_cast<uint32_t>(stub_address);
 			this->stub_opd[1] = memory::get_game_toc();

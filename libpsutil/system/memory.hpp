@@ -74,14 +74,19 @@ namespace libpsutil
 
 			uint32_t allocate_stub();
 			uint32_t resolve_branch(uint32_t instruction, uint32_t branch_address);
+			void setup_detour(uint32_t address, void* destination);
 
 		public:
-			detour(uint32_t address, void(*destination));
+			template<class T> detour(uint32_t address, T(*destination))
+			{
+				this->setup_detour(address, reinterpret_cast<void*>(destination));
+			}
+
 			~detour();
 
 			static void force_stub_address(uint32_t address);
 
-			template<typename T, typename... params> T invoke(params... parameters)
+			template<typename T = void, typename... params> T invoke(params... parameters)
 			{
 				T(*original)(params...) = (T(*)(params...))this->stub_opd;
 				return original(parameters...);
