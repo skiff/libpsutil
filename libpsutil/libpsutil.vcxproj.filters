@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="encryption">
+      <UniqueIdentifier>{c845ce83-4880-4f5b-bece-9d9d0e552231}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="network">
+      <UniqueIdentifier>{7848b185-91af-4000-a8f5-fb6d2cb778d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system">
+      <UniqueIdentifier>{68623689-2193-4415-9f84-11b6ab374658}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="math.cpp" />
+    <ClCompile Include="system\filesystem.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="system\memory.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="system\syscalls.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="network\sockets.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="encryption\rc4.cpp">
+      <Filter>encryption</Filter>
+    </ClCompile>
+    <ClCompile Include="system\imports.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="math.hpp" />
+    <ClInclude Include="symbol.hpp" />
+    <ClInclude Include="system\filesystem.hpp">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="system\memory.hpp">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="system\syscalls.hpp">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="network\sockets.hpp">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="encryption\rc4.hpp">
+      <Filter>encryption</Filter>
+    </ClInclude>
+    <ClInclude Include="system\imports.hpp">
+      <Filter>system</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
