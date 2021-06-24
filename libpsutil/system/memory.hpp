@@ -5,8 +5,6 @@
 #endif
 #include <vector>
 
-#define EXECUTABLE_SECTION __attribute__((section(".text")));
-
 namespace libpsutil
 {
 	namespace memory
@@ -66,7 +64,7 @@ namespace libpsutil
 		class detour
 		{
 		private:
-			static uint8_t hook_stub_section[0x10000] EXECUTABLE_SECTION;
+			static uint8_t hook_stub_section[0x10000] __attribute__((section(".text")));
 			static uint32_t hook_count;
 			static uint32_t force_stub_addr;
 

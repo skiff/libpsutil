@@ -28,4 +28,7 @@ namespace libpsutil
 
         int mp_object_;
     };
+
+    template <typename T> int symbol<T>::opd_table[10][2];
+    template <typename T> int symbol<T>::opd_table_id;
 }

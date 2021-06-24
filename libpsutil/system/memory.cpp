@@ -7,7 +7,7 @@ namespace libpsutil
 {
 	namespace memory
 	{
-		uint8_t detour::hook_stub_section[0x10000] EXECUTABLE_SECTION;
+		uint8_t detour::hook_stub_section[0x10000] __attribute__((section(".text")));
 		uint32_t detour::hook_count = 0;
 		uint32_t detour::force_stub_addr = 0;
 
