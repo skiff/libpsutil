@@ -14,7 +14,7 @@ namespace libpsutil
 
 			socket* http = new socket(ip, port);
 
-			size_t pos = 0, sent = 0;
+			size_t pos = 0;
 			std::string space = " ";
 			while ((pos = query.find(space, pos)) != std::string::npos)
 				query.replace(pos, space.length(), "%20");

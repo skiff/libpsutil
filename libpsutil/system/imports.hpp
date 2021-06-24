@@ -3,7 +3,8 @@
 #include <stdarg.h>
 #include <sys/prx.h>
 
-extern "C" {
+extern "C"
+{
 	int	_sys_printf(const char* format, ...);
 	int	_sys_sprintf(char* s, const char* format, ...);
 	int	_sys_vsprintf(char* s, const char* format, va_list arg);

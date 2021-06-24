@@ -89,5 +89,5 @@ namespace libpsutil
 				return original(parameters...);
 			}
 		};
-	};
+	}
 }

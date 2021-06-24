@@ -73,13 +73,13 @@ namespace libpsutil
             }
         }
 
-        uint64_t get_file_size(const std::string& file_name)
+        int64_t get_file_size(const std::string& file_name)
         {
             struct CellFsStat s;
 
             if (cellFsStat(file_name.data(), &s) == CELL_FS_SUCCEEDED)
             {
-                return s.st_size;
+                return static_cast<int64_t>(s.st_size);
             }
 
             return -1;
