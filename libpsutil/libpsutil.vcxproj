@@ -48,6 +48,7 @@
     <ClCompile Include="math.cpp" />
     <ClCompile Include="network\httpclient.cpp" />
     <ClCompile Include="network\socket.cpp" />
+    <ClCompile Include="string.cpp" />
     <ClCompile Include="system\filesystem.cpp" />
     <ClCompile Include="system\imports.cpp" />
     <ClCompile Include="system\memory.cpp" />
@@ -58,6 +59,7 @@
     <ClInclude Include="math.hpp" />
     <ClInclude Include="network\httpclient.hpp" />
     <ClInclude Include="network\socket.hpp" />
+    <ClInclude Include="string.hpp" />
     <ClInclude Include="symbol.hpp" />
     <ClInclude Include="system\filesystem.hpp" />
     <ClInclude Include="system\imports.hpp" />

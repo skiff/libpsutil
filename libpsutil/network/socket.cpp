@@ -18,7 +18,7 @@ namespace libpsutil
 			}
 		}
 
-		socket::socket(const std::string& ip, uint16_t port, socket_type type = SOCKET_TYPE_TCP)
+		socket::socket(const std::string& ip, uint16_t port, socket_type type)
 		{
 			this->ip_ = inet_addr(ip.data());
 			this->port_ = port;
@@ -29,7 +29,7 @@ namespace libpsutil
 			memset(&this->server_addr, 0, sizeof(sockaddr_in));
 		}
 
-		socket::socket(uint32_t ip, uint16_t port, socket_type type = SOCKET_TYPE_TCP)
+		socket::socket(uint32_t ip, uint16_t port, socket_type type)
 		{
 			this->ip_ = ip;
 			this->port_ = port;
