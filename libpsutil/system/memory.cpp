@@ -31,12 +31,12 @@ namespace libpsutil
 
 		bool nop(uint32_t address)
 		{
-			return set<uint32_t>(address, 0x60000000) == SUCCEEDED;
+			return memory::set<uint32_t>(address, 0x60000000);
 		}
 
 		bool blr(uint32_t address)
 		{
-			return set<uint32_t>(address, 0x4E800020) == SUCCEEDED;
+			return memory::set<uint32_t>(address, 0x4E800020);
 		}
 
 		void jump(uint32_t address, uint32_t destination, bool linked)
