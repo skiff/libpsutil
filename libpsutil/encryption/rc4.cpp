@@ -26,11 +26,14 @@ namespace libpsutil
                 for (int i = 0; i < N; i++)
                     S[i] = i;
 
-                for (int i = 0; i < N; i++) {
+                for (int i = 0; i < N; i++)
+                {
                     j = (j + S[i] + key[i % len]) % N;
 
                     swap(&S[i], &S[j]);
                 }
+
+                return 0;
             }
 
             int PRGA(unsigned char* S, char* plaintext, unsigned char* ciphertext)
@@ -48,8 +51,9 @@ namespace libpsutil
                     int rnd = S[(S[i] + S[j]) % N];
 
                     ciphertext[n] = rnd ^ plaintext[n];
-
                 }
+
+                return 0;
             }
         }
         
@@ -59,6 +63,8 @@ namespace libpsutil
             KSA(key, S);
 
             PRGA(S, plaintext, ciphertext);
+
+            return 0;
         }
 	}
 }

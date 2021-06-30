@@ -31,12 +31,12 @@ namespace libpsutil
 
 		bool nop(uint32_t address)
 		{
-			return set<uint32_t>(address, 0x60000000) == SUCCEEDED;
+			return memory::set<uint32_t>(address, 0x60000000);
 		}
 
 		bool blr(uint32_t address)
 		{
-			return set<uint32_t>(address, 0x4E800020) == SUCCEEDED;
+			return memory::set<uint32_t>(address, 0x4E800020);
 		}
 
 		void jump(uint32_t address, uint32_t destination, bool linked)
@@ -49,6 +49,22 @@ namespace libpsutil
 			instructions[3] = 0x4E800420 + (linked ? 1 : 0);
 
 			memory::set(address, instructions, sizeof(uint32_t) * 4);
+		}
+
+		void jump_safe(uint32_t address, uint32_t destination, bool linked)
+		{
+			uint32_t instructions[8] = { 0 };
+
+			instructions[0] = 0xF821FFF9;
+			instructions[1] = 0xF8010000;
+			instructions[2] = 0x3C000000 + ((destination >> 16) & 0xFFFF);
+			instructions[3] = 0x60000000 + (destination & 0xFFFF);
+			instructions[4] = 0x7C0903A6;
+			instructions[5] = 0xE8010000;
+			instructions[6] = 0x38210008;
+			instructions[7] = 0x4E800420 + (linked ? 1 : 0);
+
+			memory::set(address, instructions, sizeof(uint32_t) * 8);
 		}
 
 		uint32_t get_game_toc()
@@ -65,7 +81,7 @@ namespace libpsutil
 				stub_section = reinterpret_cast<uint8_t*>(detour::force_stub_addr);
 			}
 
-			auto stub_address = reinterpret_cast<uint32_t>(&stub_section[this->hook_count * 0x80]);
+			auto stub_address = reinterpret_cast<uint32_t>(&stub_section[this->hook_count * 0x90]);
 			this->hook_count++;
 
 			return stub_address;
@@ -111,7 +127,7 @@ namespace libpsutil
 				}
 			}
 
-			memory::jump(reinterpret_cast<uint32_t>(&stub_address[instruction_count]), address + 0x10, false);
+			memory::jump_safe(reinterpret_cast<uint32_t>(&stub_address[instruction_count]), address + 0x10, false);
 			memory::jump(address, *reinterpret_cast<uint32_t*>(destination), false);
 
 			this->stub_opd[0] = reinterpret_cast<uint32_t>(stub_address);

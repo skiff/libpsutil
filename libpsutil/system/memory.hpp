@@ -17,6 +17,7 @@ namespace libpsutil
 		bool blr(uint32_t address);
 
 		void jump(uint32_t address, uint32_t destination, bool linked = false);
+		void jump_safe(uint32_t address, uint32_t destination, bool linked = false);
 
 		uint32_t get_game_toc();
 
