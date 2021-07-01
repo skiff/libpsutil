@@ -59,6 +59,7 @@
     <ClCompile Include="network\httpclient.cpp" />
     <ClCompile Include="network\socket.cpp" />
     <ClCompile Include="string.cpp" />
+    <ClCompile Include="symbol.cpp" />
     <ClCompile Include="system\filesystem.cpp" />
     <ClCompile Include="system\imports.cpp" />
     <ClCompile Include="system\memory.cpp" />

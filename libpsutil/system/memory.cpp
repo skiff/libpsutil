@@ -102,7 +102,7 @@ namespace libpsutil
 			detour::force_stub_addr = address;
 		}
 
-		void detour::setup_detour(uint32_t address, void *destination)
+		void detour::setup_detour(uint32_t address, void *destination, uint32_t toc_override)
 		{
 			if (address == NULL) { return; }
 
@@ -131,7 +131,7 @@ namespace libpsutil
 			memory::jump(address, *reinterpret_cast<uint32_t*>(destination), false);
 
 			this->stub_opd[0] = reinterpret_cast<uint32_t>(stub_address);
-			this->stub_opd[1] = memory::get_game_toc();
+			this->stub_opd[1] = toc_override != 0 ? toc_override : memory::get_game_toc();
 		}
 
 		detour::~detour()

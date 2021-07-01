@@ -75,12 +75,12 @@ namespace libpsutil
 
 			uint32_t allocate_stub();
 			uint32_t resolve_branch(uint32_t instruction, uint32_t branch_address);
-			void setup_detour(uint32_t address, void* destination);
+			void setup_detour(uint32_t address, void* destination, uint32_t toc_override);
 
 		public:
-			template<class T> detour(uint32_t address, T(*destination))
+			template<class T> detour(uint32_t address, T(*destination), uint32_t toc_override = 0)
 			{
-				this->setup_detour(address, reinterpret_cast<void*>(destination));
+				this->setup_detour(address, reinterpret_cast<void*>(destination), toc_override);
 			}
 
 			~detour();
