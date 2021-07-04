@@ -1,11 +1,11 @@
 #include <string>
-#include "encryption/rc4.hpp"
+#include "cryptography/rc4.hpp"
 
 // https://gist.github.com/rverton/a44fc8ca67ab9ec32089
 
 namespace libpsutil
 {
-	namespace encryption
+	namespace cryptography
 	{
         namespace
         {
@@ -57,7 +57,7 @@ namespace libpsutil
             }
         }
         
-        int RC4(char* key, char* plaintext, unsigned char* ciphertext)
+        int rc4(char* key, char* plaintext, unsigned char* ciphertext)
         {
             unsigned char S[N];
             KSA(key, S);

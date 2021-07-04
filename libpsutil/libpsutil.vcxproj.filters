@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="encryption">
+    <Filter Include="cryptography">
       <UniqueIdentifier>{c845ce83-4880-4f5b-bece-9d9d0e552231}</UniqueIdentifier>
     </Filter>
     <Filter Include="network">
@@ -25,8 +25,8 @@
     <ClCompile Include="network\socket.cpp">
       <Filter>network</Filter>
     </ClCompile>
-    <ClCompile Include="encryption\rc4.cpp">
-      <Filter>encryption</Filter>
+    <ClCompile Include="cryptography\rc4.cpp">
+      <Filter>cryptography</Filter>
     </ClCompile>
     <ClCompile Include="system\imports.cpp">
       <Filter>system</Filter>
@@ -36,6 +36,15 @@
     </ClCompile>
     <ClCompile Include="string.cpp" />
     <ClCompile Include="symbol.cpp" />
+    <ClCompile Include="cryptography\md5.cpp">
+      <Filter>cryptography</Filter>
+    </ClCompile>
+    <ClCompile Include="cryptography\sha.cpp">
+      <Filter>cryptography</Filter>
+    </ClCompile>
+    <ClCompile Include="cryptography\tiger.cpp">
+      <Filter>cryptography</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math.hpp" />
@@ -52,8 +61,8 @@
     <ClInclude Include="network\socket.hpp">
       <Filter>network</Filter>
     </ClInclude>
-    <ClInclude Include="encryption\rc4.hpp">
-      <Filter>encryption</Filter>
+    <ClInclude Include="cryptography\rc4.hpp">
+      <Filter>cryptography</Filter>
     </ClInclude>
     <ClInclude Include="system\imports.hpp">
       <Filter>system</Filter>
@@ -62,5 +71,14 @@
       <Filter>network</Filter>
     </ClInclude>
     <ClInclude Include="string.hpp" />
+    <ClInclude Include="cryptography\md5.hpp">
+      <Filter>cryptography</Filter>
+    </ClInclude>
+    <ClInclude Include="cryptography\sha.hpp">
+      <Filter>cryptography</Filter>
+    </ClInclude>
+    <ClInclude Include="cryptography\tiger.hpp">
+      <Filter>cryptography</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
