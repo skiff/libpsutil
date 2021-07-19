@@ -54,7 +54,10 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="encryption\rc4.cpp" />
+    <ClCompile Include="cryptography\md5.cpp" />
+    <ClCompile Include="cryptography\rc4.cpp" />
+    <ClCompile Include="cryptography\sha.cpp" />
+    <ClCompile Include="cryptography\tiger.cpp" />
     <ClCompile Include="math.cpp" />
     <ClCompile Include="network\httpclient.cpp" />
     <ClCompile Include="network\socket.cpp" />
@@ -66,7 +69,10 @@
     <ClCompile Include="system\syscalls.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="encryption\rc4.hpp" />
+    <ClInclude Include="cryptography\md5.hpp" />
+    <ClInclude Include="cryptography\rc4.hpp" />
+    <ClInclude Include="cryptography\sha.hpp" />
+    <ClInclude Include="cryptography\tiger.hpp" />
     <ClInclude Include="math.hpp" />
     <ClInclude Include="network\httpclient.hpp" />
     <ClInclude Include="network\socket.hpp" />
