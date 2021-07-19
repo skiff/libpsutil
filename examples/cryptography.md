@@ -15,10 +15,10 @@ void hash_text(char* text)
     libpsutil::encryption::sha1(text, strlen(text) + 1, output1);
 	
 	char output256[CELL_SHA256_DIGEST_SIZE] = { 0 };
-    libpsutil::encryption::sha1(text, strlen(text) + 1, output256);
+    libpsutil::encryption::sha256(text, strlen(text) + 1, output256);
 	
 	char output512[CELL_SHA512_DIGEST_SIZE] = { 0 };
-    libpsutil::encryption::sha1(text, strlen(text) + 1, output512);
+    libpsutil::encryption::sha512(text, strlen(text) + 1, output512);
 }
 ```
 
