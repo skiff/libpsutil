@@ -30,6 +30,13 @@
 - HTTP Get requests
 - Math library (vec2, vec3, vec4)
 
+## Cryptography
+In order to use the cryptography namespace, you will need to add additional dependencies for the appropriate functions
+- Add `$(SCE_PS3_ROOT)\target\ppu\lib\hash\libsha1.a` for `libpsutil::cryptography::sha1`
+- Add `$(SCE_PS3_ROOT)\target\ppu\lib\hash\libsha256.a` for `libpsutil::cryptography::sha256`
+- Add `$(SCE_PS3_ROOT)\target\ppu\lib\hash\libsha512.a` for `libpsutil::cryptography::sha512`
+- Add `$(SCE_PS3_ROOT)\target\ppu\lib\hash\libmd5.a` for `libpsutil::cryptography::md5`
+
 ## Dynamic SPRX Loading
 If you use my [PS3 Toolbox](https://github.com/skiff/PS3-Toolbox) to load your SPRX without an EBOOT, you will need to grab an update version of this tool. The original release uses the game's header to execute code, but that header is now needed to read the game TOC so adjustments were made to the tool.
 
