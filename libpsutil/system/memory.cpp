@@ -81,7 +81,7 @@ namespace libpsutil
 				stub_section = reinterpret_cast<uint8_t*>(detour::force_stub_addr);
 			}
 
-			auto stub_address = reinterpret_cast<uint32_t>(&stub_section[this->hook_count * 0x90]);
+			auto stub_address = reinterpret_cast<uint32_t>(&stub_section[this->hook_count * 0xA0]);
 			this->hook_count++;
 
 			return stub_address;
@@ -117,8 +117,8 @@ namespace libpsutil
 				auto current_address = reinterpret_cast<uint32_t>(&stub_address[instruction_count]);
 				if ((this->address[i] & 0xF8000000) == 0x48000000)
 				{
-					memory::jump(current_address, this->resolve_branch(this->address[i], (int)&this->address[i]), true);
-					instruction_count += 4;
+					memory::jump_safe(current_address, this->resolve_branch(this->address[i], (int)&this->address[i]), true);
+					instruction_count += 8;
 				}
 				else
 				{
