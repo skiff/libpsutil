@@ -5,7 +5,7 @@ namespace libpsutil
 {
     namespace symbol_helper
     {
-        void* get_symbol(unsigned int address);
+        void* get_symbol(unsigned int address, unsigned int toc);
     }
 
     template<typename T> class symbol
@@ -14,7 +14,7 @@ namespace libpsutil
         operator T* ()
         {
             T* type = *reinterpret_cast<T*>(this->mp_object_);
-            return (decltype(type))symbol_helper::get_symbol(this->mp_object_);
+            return (decltype(type))symbol_helper::get_symbol(this->mp_object_, toc);
         }
 
         T* get()
@@ -23,5 +23,6 @@ namespace libpsutil
         }
 
         int mp_object_;
+        int toc;
     };
 }

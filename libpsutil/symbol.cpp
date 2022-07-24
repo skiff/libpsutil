@@ -11,7 +11,7 @@ namespace libpsutil
         };
 
         std::vector<opd_s> symbol_table;
-        void* get_symbol(unsigned int address)
+        void* get_symbol(unsigned int address, unsigned int toc)
         {
             for (auto i = 0; i < symbol_table.size(); i++)
             {
@@ -23,7 +23,7 @@ namespace libpsutil
             symbol_table.push_back(opd_s());
             opd_s* opd = &symbol_table[symbol_table.size() - 1];
             opd->address = address;
-            opd->toc = memory::get_game_toc();
+            opd->toc = toc != 0 ? toc : memory::get_game_toc();
 
             return opd;
         }
