@@ -69,6 +69,7 @@
     <ClCompile Include="system\syscalls.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\libpsutil.h" />
     <ClInclude Include="cryptography\md5.hpp" />
     <ClInclude Include="cryptography\rc4.hpp" />
     <ClInclude Include="cryptography\sha.hpp" />
@@ -82,6 +83,12 @@
     <ClInclude Include="system\imports.hpp" />
     <ClInclude Include="system\memory.hpp" />
     <ClInclude Include="system\syscalls.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\include\exception" />
+    <None Include="..\include\initializer_list" />
+    <None Include="..\include\vector" />
+    <None Include="..\include\xstring" />
   </ItemGroup>
   <Import Condition="'$(ConfigurationType)' == 'Makefile' and Exists('$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets')" Project="$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

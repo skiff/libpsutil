@@ -10,6 +10,9 @@
     <Filter Include="system">
       <UniqueIdentifier>{68623689-2193-4415-9f84-11b6ab374658}</UniqueIdentifier>
     </Filter>
+    <Filter Include="includes_final">
+      <UniqueIdentifier>{7e660cee-52d1-45e7-800e-db464f6ff52f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="math.cpp" />
@@ -80,5 +83,22 @@
     <ClInclude Include="cryptography\tiger.hpp">
       <Filter>cryptography</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\libpsutil.h">
+      <Filter>includes_final</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\include\exception">
+      <Filter>includes_final</Filter>
+    </None>
+    <None Include="..\include\initializer_list">
+      <Filter>includes_final</Filter>
+    </None>
+    <None Include="..\include\vector">
+      <Filter>includes_final</Filter>
+    </None>
+    <None Include="..\include\xstring">
+      <Filter>includes_final</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -34,8 +34,11 @@ namespace libpsutil
                 read_file(file_name, data, size);
 
                 std::string output;
-                output.resize(size + 1);
+                output.resize(size);
                 memcpy(const_cast<char*>(output.data()), data, static_cast<size_t>(size));
+
+                delete[] data;
+
                 return output;
             }
 
